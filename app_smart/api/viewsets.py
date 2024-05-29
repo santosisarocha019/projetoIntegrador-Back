@@ -3,10 +3,11 @@ from rest_framework import generics, permissions
 from app_smart.api import serializers
 from rest_framework.response import Response
 from rest_framework import status
-from ..models import Sensor, TemperaturaData
+from ..models import Sensor, TemperaturaData, UmidadeData, LuminosidadeData
 from rest_framework import viewsets
-from app_smart.api.filters import SensorFilter, TemperaturaDataFilter
+from app_smart.api.filters import SensorFilter, TemperaturaDataFilter, UmidadeDataFilter, LuminosidadeDataFilter
 from django_filters.rest_framework import DjangoFilterBackend
+
 class CreateUserAPIViewSet(generics.CreateAPIView):
     queryset = User.objects
     serializer_class = serializers.UserSerializer
@@ -18,7 +19,7 @@ class CreateUserAPIViewSet(generics.CreateAPIView):
 class SensorViewSet(viewsets.ModelViewSet):
     queryset = Sensor.objects.all()
     serializer_class = serializers.SensorSerializer
-    permission_class = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_class = SensorFilter
 
@@ -29,4 +30,18 @@ class TemperaturaDataViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_class = TemperaturaDataFilter
 
+class UmidadeDataViewSet(viewsets.ModelViewSet):
+    queryset = UmidadeData.objects.all()
+    serializer_class = serializers.UmidadeDataSerializers
+    permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = UmidadeDataFilter
+
+
+class LuminosidadeDataViewSet(viewsets.ModelViewSet):
+    queryset = LuminosidadeData.objects.all()
+    serializer_class = serializers.LuminosidadeDataSerializers
+    permission_classes = [permissions.IsAuthenticated]
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = LuminosidadeDataFilter
     

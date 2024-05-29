@@ -24,4 +24,12 @@ class TemperaturaDataSerializers(serializers.ModelSerializer):
         model = TemperaturaData
         fields = '__all__'
 
+class UmidadeDataSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = UmidadeData
+        fields = '__all__'
 
+class LuminosidadeDataSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = LuminosidadeData
+        fields = '__all__'
