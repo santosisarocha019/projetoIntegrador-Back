@@ -33,3 +33,8 @@ class LuminosidadeDataSerializers(serializers.ModelSerializer):
     class Meta:
         model = LuminosidadeData
         fields = '__all__'
+
+class ContadorDataSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = ContadorData
+        fields = '__all__'

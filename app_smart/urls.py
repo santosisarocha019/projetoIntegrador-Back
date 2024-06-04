@@ -1,9 +1,9 @@
 from django.urls import path,include
 from . import views
-from .api.viewsets import CreateUserAPIViewSet, SensorViewSet, TemperaturaDataViewSet, UmidadeDataViewSet, LuminosidadeDataViewSet
+from .api.viewsets import CreateUserAPIViewSet, SensorViewSet, TemperaturaDataViewSet, UmidadeDataViewSet, LuminosidadeDataViewSet, ContadorDataViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.routers import DefaultRouter
-from .api.filters import SensorFilterView, TemperaturaDataFilterView, UmidadeDataFilterView, LuminosidadeDataFilterView
+from .api.filters import SensorFilterView, TemperaturaDataFilterView, UmidadeDataFilterView, LuminosidadeDataFilterView, CotadorFilterView
 
 
 router = DefaultRouter()
@@ -11,6 +11,7 @@ router.register(r'sensores', SensorViewSet)
 router.register(r'temperatura',TemperaturaDataViewSet)
 router.register(r'umidade',UmidadeDataViewSet)
 router.register(r'Luminosidade',LuminosidadeDataViewSet)
+router.register(r'Contador',ContadorDataViewSet)
 
 
 urlpatterns = [   
@@ -23,6 +24,7 @@ urlpatterns = [
     path('api/temperatura_filter/', TemperaturaDataFilterView.as_view(), name='temperatura_filter'),
     path('api/umidade_filter/', UmidadeDataFilterView.as_view(), name='umidade_filter'),
     path('api/luminosidade_filter/', LuminosidadeDataFilterView.as_view(), name='luminosidade_filter'),
+    path('api/contador_filter/', CotadorFilterView.as_view(), name='contador_filter'),
 
 
 

@@ -3,7 +3,7 @@ from rest_framework import generics, permissions
 from app_smart.api import serializers
 from rest_framework.response import Response
 from rest_framework import status
-from ..models import Sensor, TemperaturaData, UmidadeData, LuminosidadeData
+from ..models import Sensor, TemperaturaData, UmidadeData, LuminosidadeData, ContadorData
 from rest_framework import viewsets
 from app_smart.api.filters import SensorFilter, TemperaturaDataFilter, UmidadeDataFilter, LuminosidadeDataFilter
 from django_filters.rest_framework import DjangoFilterBackend
@@ -45,3 +45,9 @@ class LuminosidadeDataViewSet(viewsets.ModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_class = LuminosidadeDataFilter
     
+class ContadorDataViewSet(viewsets.ModelViewSet):
+    queryset = ContadorData.objects.all()
+    serializer_class = serializers.ContadorDataSerializers
+    permission_classes = [permissions.IsAuthenticated]
+    # filter_backends = [DjangoFilterBackend]
+    # filterset_class = LuminosidadeDataFilter
