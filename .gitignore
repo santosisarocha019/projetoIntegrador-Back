@@ -1,1 +1,6 @@
 /env
+/load_contador.py
+/load_luminosidade.py
+/load_sensor.py
+/load_temperature.py
+/load_umidade.py
